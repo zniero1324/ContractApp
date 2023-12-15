@@ -1,0 +1,27 @@
+﻿<Application x:Class="ContractApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ContractApp"
+             xmlns:viewModels="clr-namespace:ContractApp.MVVM.ViewModels"
+             xmlns:views="clr-namespace:ContractApp.MVVM.Views"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/NavigationButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/SearchBarTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type viewModels:EmployerListViewModel}">
+                <views:EmployerListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:MaidListViewModel}">
+                <views:MaidListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ContractListViewModel}">
+                <views:ContractListView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

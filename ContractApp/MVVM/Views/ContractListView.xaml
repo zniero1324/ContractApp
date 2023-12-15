@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="ContractApp.MVVM.Views.ContractListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ContractApp.MVVM.Views"
+             xmlns:viewModels="clr-namespace:ContractApp.MVVM.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewModels:ContractListViewModel/>
+    </UserControl.DataContext>
+    <ScrollViewer>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       Text="Contracts" 
+                       FontWeight="Bold"
+              />
+
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Margin="0,33,0,27"
+                        >
+
+                <TextBox Grid.Row="1"
+                         Grid.Column="0"
+                         Style="{StaticResource SearchBarTheme}"
+                         />
+                <Button Grid.Row="1"
+                        Grid.Column="1" 
+                        Content="Search"
+                        Style="{StaticResource ButtonTheme}"
+                         />
+            </StackPanel>
+            <ItemsControl Margin="10" Grid.Row="2" ItemsSource="{Binding OverAllData}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10"
+                                Margin="10"
+                                BorderBrush="#000"
+                                Background="#fff"
+                                BorderThickness="1">
+                            <Expander>
+                                <Expander.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Maid Name: "/>
+                                        <TextBlock Text="{Binding Maid.Name}" />
+                                    </StackPanel>
+                                </Expander.Header>
+                                
+                                <Grid HorizontalAlignment="Center"
+                                      VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="Employer's Name:"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Employer.EmpName}"/>
+                                    <Label Grid.Row="1" Content="Spouse Name:"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Spouse.EmpName}"/>
+                                </Grid>
+                            </Expander>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

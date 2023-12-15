@@ -1,0 +1,74 @@
+﻿<Window x:Class="ContractApp.MVVM.Views.AddFamilyMemberView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContractApp.MVVM.Views"
+        xmlns:viewModels="clr-namespace:ContractApp.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="AddFamilyMemberView" Height="330" Width="550">
+
+    <Window.DataContext>
+        <viewModels:FamilyMemberViewModel/>
+    </Window.DataContext>
+    <StackPanel Margin="20"
+            HorizontalAlignment="Center">
+
+        <TextBlock Text="Family Member"
+               FontWeight="Bold"
+               FontSize="20"
+               HorizontalAlignment="Center" 
+               />
+
+        <Label Content="Fullname :" 
+           FontSize="15"/>
+        <TextBox Width="500" 
+             HorizontalAlignment="Left"
+             Text="{Binding FamName}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Card Number :"
+               FontSize="15"
+               Grid.Column="0"/>
+
+            <TextBox Grid.Row="1" 
+                 Width="240" 
+                 HorizontalAlignment="Left"
+                 Text="{Binding FamCardNo}"/>
+
+            <Label Content="Date Of Birth :"
+               FontSize="15"
+               Grid.Column="1"/>
+
+            <DatePicker Grid.Row="1"
+                    Grid.Column="1"
+                    Width="240" 
+                    HorizontalAlignment="Left"
+                    SelectedDate="{Binding FamDOB, StringFormat = {}{0:dd.MM.yyyy}}"/>
+
+            <Label Content="Relationship :"
+               FontSize="15"
+               Grid.Row="2"/>
+
+            <TextBox Grid.Row="3" 
+                 Width="240" 
+                 HorizontalAlignment="Left"
+                 Text="{Binding FamRelationship}"/>
+        </Grid>
+        <Button Width="230"
+            Margin="50"
+            Content="Save Family Member"
+            Style="{StaticResource ButtonTheme}"
+            Command="{Binding AddFamilyCommand}"/>
+    </StackPanel>
+</Window>

@@ -1,0 +1,195 @@
+﻿<Window x:Class="ContractApp.MVVM.Views.AddMaidView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContractApp.MVVM.Views"
+        xmlns:viewModels="clr-namespace:ContractApp.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="AddMaidView" Height="450" Width="800">
+    <Window.DataContext>
+        <viewModels:AddMaidViewModel/>
+    </Window.DataContext>
+    <ScrollViewer>
+        <StackPanel Margin="20" HorizontalAlignment="Center">
+            <TextBlock Text="ADD MAID" 
+            FontSize="20"
+            FontWeight="Bold"
+            HorizontalAlignment="Center"/>
+            <Label Content="Bio Code:"
+        Margin="10 0"/>
+            <TextBox Text="{Binding BioCode}"
+          Margin="10 0"/>
+            <Label Content="Maid's Name:"
+        Margin="10 0"/>
+            <TextBox Text="{Binding Name}"
+          Margin="10 0"/>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0"
+            HorizontalAlignment="Left"
+            Content="WP No: "
+            Width="230"/>
+                <TextBox Grid.Row="1"
+              Margin="0 0 10 0"
+              HorizontalAlignment="Left"
+              Width="230"
+              Text="{Binding WpNo}"/>
+                <Label Grid.Column="1"
+            HorizontalAlignment="Left"
+            Content="Passport No.: "/>
+                <TextBox Grid.Row="1"
+              Grid.Column="1"
+              HorizontalAlignment="Left"
+              Width="230"
+              Text="{Binding PassportNo}"/>
+                <Label Grid.Row="2"
+            Content="Marital Status: "/>
+                <ComboBox Text="{Binding Status}" 
+               Width="220"
+               Grid.Row="3"
+               Grid.Column="0">
+                    <TextBlock Text="Married"/>
+                    <TextBlock Text="Single"/>
+                    <TextBlock Text="Divorced"/>
+                    <TextBlock Text="Widowed"/>
+                </ComboBox>
+                <Label Grid.Row="2"
+            Grid.Column="1"
+            Content="Nationality"/>
+                <TextBox Grid.Row="3"
+              HorizontalAlignment="Left"
+              Width="230"
+              Grid.Column="1"
+              Text="{Binding Nationality}"
+              />
+                <Label Grid.Row="4"
+            Grid.Column="0"
+            Content="Fin No.: "/>
+                <TextBox Grid.Row="5"
+              HorizontalAlignment="Left"
+              Width="230"
+              Grid.Column="0"
+              Text="{Binding FinNo}"
+              />
+                <Label Grid.Row="4"
+                    Grid.Column="1"
+                    Content="Date of Birth: "/>
+                <DatePicker Grid.Column="1"
+                        Grid.Row="5"
+                        HorizontalAlignment="Left"
+                        Width="230"
+                        SelectedDate="{Binding DateOfBirth,  StringFormat = {}{0:dd.MM.yyyy}}"/>
+
+                <Label Grid.Row="6" 
+                    Grid.Column="0"
+                    Content="Salary"/>
+
+                <TextBox Grid.Row="7" 
+                      Grid.Column="0"
+                      Margin="0 0 10 0"
+                      Text="{Binding Salary}"
+                      />
+
+                <!--Rest day Fee-->
+                <Label Grid.Row="6"
+                    Grid.Column="1"
+                    Margin="0 10 0 0" 
+                    Content="Maid's Rest day Salary"/>
+                <TextBox Grid.Row="7"
+                      Grid.Column="1"
+                      Text="{Binding RestDaySalary}" Margin="5 0"/>
+
+
+                <Label Grid.Row="8"
+                    Content="Deploy Date"/>
+                <DatePicker Grid.Row="9"
+                         HorizontalAlignment="Left"
+                         Width="230"
+                         SelectedDate="{Binding DeployDate,  StringFormat = {}{0:dd.MM.yyyy}}"/>
+
+            </Grid>
+
+            <TextBlock Text="Fees" 
+            FontSize="20"
+            FontWeight="Bold"
+            HorizontalAlignment="Center"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="Agency Fee"/>
+                <TextBox Text="{Binding AgencyFee}" Grid.Row="1" Margin="5 0"/>
+                <Label Grid.Column="1" Content="Experience Fee"/>
+                <TextBox Text="{Binding ExpFee}" Grid.Column="1" Margin="5 0" Grid.Row="1"/>
+                <Label Grid.Column="2"  Content="Insurance"/>
+                <TextBox Text="{Binding Insurance}" Grid.Column="2" Grid.Row="1" Margin="5 0"/>
+            </Grid>
+            <!--Fees for database-->
+            <Label Margin="0 10 0 0" Content="FDW Overseas Expenses"/>
+            <TextBox Text="{Binding OverseasExpenses}" Margin="5 0"/>
+
+            <!--Singapore Agency Service Fee-->
+            <Label Margin="0 10 0 0" Content="Singapore Agency Service Fee"/>
+            <TextBox Text="{Binding SG_ServiceFee}" Margin="5 0"/>
+
+            <!--Medical, X-Ray, Pregnacy Test including NIR update by clinic-->
+            <Label Margin="0 10 0 0" Content="Medical, X-Ray, Pregnacy Test including NIR update by clinic"/>
+            <TextBox Text="{Binding MedicalExpenses}" Margin="5 0"/>
+
+            <!--SIP, WP Fee, etc (New Arrival)-->
+            <Label Margin="0 10 0 0" Content="SIP, WP Fee, etc (New Arrival)"/>
+            <TextBox Text="{Binding NewArrivalFee}" Margin="5 0"/>
+
+            <!--POEA + 2K Bond  and Air Ticket-->
+            <Label Margin="0 10 0 0" Content="POEA + 2K Bond  and Air Ticket"/>
+            <TextBox Text="{Binding POEA}" Margin="5 0"/>
+
+            <!--PCR HR (S1$100, S2$60, S3$350, S4$450-->
+            <Label Margin="0 10 0 0" Content="PCR HR (S1$100, S2$60, S3$350, S4$450"/>
+            <TextBox Text="{Binding PCR_HR}" Margin="5 0"/>
+
+            <!--Document (for TRF FDW)-->
+            <Label Margin="0 10 0 0" Content="Document (for TRF FDW)"/>
+            <TextBox Text="{Binding TRF}" Margin="5 0"/>
+
+            <!--Indonesia Embassy Contract ($150) and Air Ticket-->
+            <Label Margin="0 10 0 0" Content="Indonesia Embassy Contract ($150) and Air Ticket"/>
+            <TextBox Text="{Binding AirTicket_IndEC}" Margin="5 0"/>
+
+
+            <Button Margin="20" 
+         Width="250"
+         Style="{StaticResource ButtonTheme}"
+         Command="{Binding AddMaidCommand}"
+         Content="Save Maid"/>
+
+
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
